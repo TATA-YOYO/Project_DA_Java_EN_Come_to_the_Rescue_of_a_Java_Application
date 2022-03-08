@@ -9,7 +9,7 @@ public class AnalyticsCounter {
 	private static int rashCount = 0;
 	private static int pupilCount = 0;
 	
-	public static void main(String args[]) throws Exception {
+	public static void main(String[] args) throws Exception {
 		// first get input
 		BufferedReader reader = new BufferedReader (new FileReader("C:\\Users\\Marc-black\\Documents\\P2\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt"));
 		String line = reader.readLine();
