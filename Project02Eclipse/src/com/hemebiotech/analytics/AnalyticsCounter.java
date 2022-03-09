@@ -3,6 +3,8 @@ package com.hemebiotech.analytics;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AnalyticsCounter {
     private static int headacheCount = 0;
@@ -11,22 +13,23 @@ public class AnalyticsCounter {
 
     public static void main(String[] args) throws Exception {
         // first get input
-        BufferedReader reader = new BufferedReader(new FileReader(args[0]));
+        Map<String, Integer> mapOfSymptoms = new HashMap<String, Integer>();
+        BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Marc-black\\s.txt"));
         String line = reader.readLine();
+        mapOfSymptoms.put(line,1);
+        line = reader.readLine();
 
-        int i = 0;
+
         while (line != null) {
-            i++;
-            System.out.println("symptom from file: " + line);
-            if (line.equals("headache")) {
-                headacheCount++;
-                System.out.println("number of headaches: " + headacheCount);
-            } else if (line.equals("rush")) {
-                rashCount++;
-            } else if (line.contains("pupils")) {
-                pupilCount++;
-            }
 
+            if (mapOfSymptoms.get(line)==null){
+                mapOfSymptoms.put(line,1);
+            }
+            else{
+                int v = mapOfSymptoms.get(line);
+                v++;
+                mapOfSymptoms.put(line,v);
+            }
             line = reader.readLine();
         }
 
