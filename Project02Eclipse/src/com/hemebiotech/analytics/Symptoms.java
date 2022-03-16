@@ -1,15 +1,20 @@
 package com.hemebiotech.analytics;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 public class Symptoms {
     Map<String, Integer> mapOfSymptoms;
-    List<String> listOfSymptoms;
+    String[] symptomsArray;
 
-    public Symptoms(IReadSymptoms read, String pathOfSymptomsFile) throws IOException {
+    public Symptoms(IReadSymptoms read,IAlphabeticalArraySorter sorter, String pathOfSymptomsFile) throws IOException {
         this.mapOfSymptoms = read.readFromFile(pathOfSymptomsFile);
+        this.symptomsArray = new String[mapOfSymptoms.size()];
+        int currentIndex = 0;
+        for (Map.Entry<String, Integer> entry : mapOfSymptoms.entrySet()) {
+            symptomsArray[currentIndex] = entry.getKey();
+            currentIndex++;
+        }
+        symptomsArray = sorter.stringArraySort(symptomsArray);
     }
-
 }

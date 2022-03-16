@@ -3,15 +3,14 @@ package com.hemebiotech.analytics;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Map;
 
 public class WriterOfSymptomsMap {
 
-    public void writeSymptoms(String file, Symptoms symptomToWrite) throws IOException {
-        for (Map.Entry<String, Integer> entry : symptomToWrite.mapOfSymptoms.entrySet()) {
+    public void writeOnFile(String file, Symptoms symptomToWrite) throws IOException {
+        for (String myArray : symptomToWrite.symptomsArray) {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
             try {
-                writer.write(entry.getKey() + " :" + entry.getValue());
+                writer.write(myArray + " :" + symptomToWrite.mapOfSymptoms.get(myArray));
                 writer.newLine();
                 writer.close();
             } catch (IOException e) {
@@ -20,3 +19,4 @@ public class WriterOfSymptomsMap {
         }
     }
 }
+
