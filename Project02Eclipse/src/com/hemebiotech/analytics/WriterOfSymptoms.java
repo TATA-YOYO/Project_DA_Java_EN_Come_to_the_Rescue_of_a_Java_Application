@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class WriterOfSymptomsMap {
+public class WriterOfSymptoms {
 
     public void writeOnFile(String file, Symptoms symptomToWrite) throws IOException {
         for (String myArray : symptomToWrite.symptomsArray) {
