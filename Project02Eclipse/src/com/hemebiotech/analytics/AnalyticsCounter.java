@@ -1,11 +1,12 @@
 package com.hemebiotech.analytics;
 
 public class AnalyticsCounter {
+    private static IReadSymptoms symptomsReader = new ReaderOfSymptoms();
+    private static IAlphabeticalArraySorter alphabeticalSorter = new AlphabeticalSorter();
+    private static WriterOfSymptoms symptomsWriter = new WriterOfSymptoms();
+
     public static void main(String[] args) throws Exception {
-        ReaderOfSymptoms symptomsReader = new ReaderOfSymptoms();
-        AlphabeticalSorter sorterOfAlphabetical = new AlphabeticalSorter();
-        Symptoms symptomsObject = new Symptoms(symptomsReader,sorterOfAlphabetical, "C:\\Users\\Marc-black\\s.txt");
-        WriterOfSymptoms symptomsWriter = new WriterOfSymptoms();
-        symptomsWriter.writeOnFile("C:\\Users\\Marc-black\\Desktop\\result.txt", symptomsObject);
+        Symptoms symptomsObject = new Symptoms(symptomsReader, alphabeticalSorter, args[0]);
+        symptomsWriter.writeOnFile(args[1], symptomsObject);
     }
 }

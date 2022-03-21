@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.util.Map;
 
 public class Symptoms {
-    Map<String, Integer> mapOfSymptoms;
-    String[] symptomsArray;
+    private Map<String, Integer> mapOfSymptoms;
+    private String[] symptomsArray;
 
-    public Symptoms(IReadSymptoms read,IAlphabeticalArraySorter sorter, String pathOfSymptomsFile) throws IOException {
+    public Symptoms(IReadSymptoms read, IAlphabeticalArraySorter sorter, String pathOfSymptomsFile) throws IOException {
         this.mapOfSymptoms = read.readFromFile(pathOfSymptomsFile);
         this.symptomsArray = new String[mapOfSymptoms.size()];
         int currentIndex = 0;
@@ -16,5 +16,13 @@ public class Symptoms {
             currentIndex++;
         }
         symptomsArray = sorter.stringArraySort(symptomsArray);
+    }
+
+    public Map<String, Integer> getMapOfSymptoms() {
+        return mapOfSymptoms;
+    }
+
+    public String[] getSymptomsArray() {
+        return symptomsArray;
     }
 }
