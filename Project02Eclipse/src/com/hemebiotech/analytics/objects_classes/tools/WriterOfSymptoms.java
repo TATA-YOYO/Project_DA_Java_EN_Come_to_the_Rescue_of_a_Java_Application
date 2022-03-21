@@ -1,11 +1,14 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.analytics.objects_classes.tools;
+
+import com.hemebiotech.analytics.IWriteSymptoms;
+import com.hemebiotech.analytics.objects_classes.Symptoms;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class WriterOfSymptoms {
-
+public class WriterOfSymptoms implements IWriteSymptoms {
+@Override
     public void writeOnFile(String file, Symptoms symptomToWrite) throws IOException {
         for (String myArray : symptomToWrite.getSymptomsArray()) {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));

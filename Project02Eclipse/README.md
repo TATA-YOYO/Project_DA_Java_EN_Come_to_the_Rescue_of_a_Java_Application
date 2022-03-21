@@ -1,4 +1,5 @@
+<H1>Sample project for OpenClassroom's fundamentals of Java</H1>
 
-The analytics counter have to run by a command line.
-the first argument have to be a file path of symptoms.
-the second argument have to be a file path for app output
+The programme have to run by a command line.<br>
+the first argument have to be a file path of symptoms.<br>
+the second argument have to be a file path for app output.

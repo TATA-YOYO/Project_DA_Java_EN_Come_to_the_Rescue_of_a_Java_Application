@@ -1,4 +1,7 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.analytics.objects_classes;
+
+import com.hemebiotech.analytics.IAlphabeticalArraySorter;
+import com.hemebiotech.analytics.IReadSymptoms;
 
 import java.io.IOException;
 import java.util.Map;

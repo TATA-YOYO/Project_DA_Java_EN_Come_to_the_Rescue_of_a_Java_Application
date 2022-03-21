@@ -1,12 +1,17 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.analytics.objects_classes.tools;
 
+import com.hemebiotech.analytics.IAlphabeticalArraySorter;
+
+/**
+ * arranges in alphabetical order on an array of Strings from an input array,
+ * then returns it
+ */
 public class AlphabeticalSorter implements IAlphabeticalArraySorter {
     @Override
     public String[] stringArraySort(String[] words) {
-        int h = 4;
         for (int i = 0; i < words.length - 1; i++) {
             for (int j = i + 1; j < words.length; j++) {
-                if (words[i].compareTo(words[j]) > 0)//words[i] is greater than words[j]
+                if (words[i].compareTo(words[j]) > 0)
                 {
                     String temp = words[i];
                     words[i] = words[j];

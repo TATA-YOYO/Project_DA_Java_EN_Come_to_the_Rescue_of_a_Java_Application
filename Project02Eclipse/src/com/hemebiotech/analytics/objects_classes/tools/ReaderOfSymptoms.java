@@ -1,4 +1,6 @@
-package com.hemebiotech.analytics;
+package com.hemebiotech.analytics.objects_classes.tools;
+
+import com.hemebiotech.analytics.IReadSymptoms;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,7 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Simple brute force implementation
+ * from a file it reads and returns a map
+ * with the symptoms in key and their number of occurrences in value
  */
 public class ReaderOfSymptoms implements IReadSymptoms {
 
