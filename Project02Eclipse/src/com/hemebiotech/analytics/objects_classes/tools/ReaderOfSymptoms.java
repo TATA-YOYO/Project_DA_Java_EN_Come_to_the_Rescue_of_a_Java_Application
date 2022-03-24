@@ -1,7 +1,6 @@
 package com.hemebiotech.analytics.objects_classes.tools;
 
 import com.hemebiotech.analytics.IReadSymptoms;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,7 +13,6 @@ import java.util.Map;
  */
 public class ReaderOfSymptoms implements IReadSymptoms {
 
-
     @Override
     public Map<String, Integer> readFromFile(String file) throws IOException {
         Map<String, Integer> mapOfFile = new HashMap<>();
@@ -22,7 +20,6 @@ public class ReaderOfSymptoms implements IReadSymptoms {
         String line = reader.readLine();
         mapOfFile.put(line, 1);
         line = reader.readLine();
-
 
         while (line != null) {
 
