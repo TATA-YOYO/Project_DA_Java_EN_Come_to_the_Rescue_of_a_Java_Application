@@ -1,23 +1,24 @@
 package com.hemebiotech.analytics;
 
-import com.hemebiotech.analytics.objects_classes.Symptoms;
-import com.hemebiotech.analytics.objects_classes.tools.AlphabeticalSorter;
-import com.hemebiotech.analytics.objects_classes.tools.ReaderOfSymptoms;
-import com.hemebiotech.analytics.objects_classes.tools.WriterOfSymptoms;
+import com.hemebiotech.analytics.symptoms.Symptoms;
+import com.hemebiotech.analytics.tools.IReadSymptoms;
+import com.hemebiotech.analytics.tools.IWriteSymptoms;
+import com.hemebiotech.analytics.tools.ReaderOfSymptoms;
+import com.hemebiotech.analytics.tools.WriterOfSymptoms;
+import java.util.Map;
 
 /**
- * The symptoms are ordered and counted during the construction of the symptoms object,
- * then a file listing them is generated thanks to the "symptomsWriter"
+ * Reads symptoms from a file then generate a file with these symptoms in alphabetical order and their occurrences.<br>
  * <strong>The first argument have to be a file path of symptoms.<br>
  * The second argument have to be a file path for app output.</strong>
  */
 public class AnalyticsCounter {
     private static IReadSymptoms symptomsReader = new ReaderOfSymptoms();
-    private static IAlphabeticalArraySorter alphabeticalSorter = new AlphabeticalSorter();
     private static IWriteSymptoms symptomsWriter = new WriterOfSymptoms();
 
     public static void main(String[] args) throws Exception {
-        Symptoms symptomsObject = new Symptoms(symptomsReader, alphabeticalSorter, args[0]);
+        Map<String, Integer> mapOfSymptoms = symptomsReader.readFromFile(args[0]);
+        Symptoms symptomsObject = new Symptoms(mapOfSymptoms);
         symptomsWriter.writeOnFile(args[1], symptomsObject);
     }
 }

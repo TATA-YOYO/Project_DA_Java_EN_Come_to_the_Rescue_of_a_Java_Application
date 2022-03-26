@@ -1,10 +1,8 @@
-package com.hemebiotech.analytics.objects_classes.tools;
-
-import com.hemebiotech.analytics.IAlphabeticalArraySorter;
+package com.hemebiotech.analytics.tools;
 
 /**
- * arranges in alphabetical order on an array of Strings from an input array,
- * then returns it
+ * Arranges in alphabetical order an array of Strings from an input array,
+ * then returns it.
  */
 public class AlphabeticalSorter implements IAlphabeticalArraySorter {
     @Override
