@@ -1,1 +1,5 @@
-# Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application
+<H1>Sample project for OpenClassroom's fundamentals of Java</H1>
+
+The programme have to run by a command line.<br>
+The first argument have to be a file path of symptoms.<br>
+The second argument have to be a file path for app output.
