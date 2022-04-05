@@ -1,7 +1,6 @@
 package com.hemebiotech.analytics.symptoms;
 
-import com.hemebiotech.analytics.tools.IAlphabeticalArraySorter;
-import com.hemebiotech.analytics.tools.AlphabeticalSorter;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,26 +9,19 @@ import java.util.Map;
  * It is during the construction of the object that the symptoms are ordered.
  */
 public class Symptoms {
-    private static IAlphabeticalArraySorter alphabeticalSorter = new AlphabeticalSorter();
     private Map<String, Integer> mapOfSymptoms;
-    private String[] symptomsArray;
+    private List<String> listOfSymptoms;
 
-    public Symptoms( Map<String, Integer> mapOfSymptoms) {
-        this.mapOfSymptoms =  mapOfSymptoms;
-        this.symptomsArray = new String[mapOfSymptoms.size()];
-        int currentIndex = 0;
-        for (Map.Entry<String, Integer> entry : mapOfSymptoms.entrySet()) {
-            symptomsArray[currentIndex] = entry.getKey();
-            currentIndex++;
-        }
-        symptomsArray = alphabeticalSorter.stringArraySort(symptomsArray);
+    public Symptoms(Map<String, Integer> mapOfSymptoms, List myList) {
+        this.mapOfSymptoms = mapOfSymptoms;
+        this.listOfSymptoms = myList;
     }
 
     public Map<String, Integer> getMapOfSymptoms() {
         return mapOfSymptoms;
     }
 
-    public String[] getSymptomsArray() {
-        return symptomsArray;
+    public List<String> getListOfSymptoms() {
+        return listOfSymptoms;
     }
 }

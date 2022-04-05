@@ -4,24 +4,22 @@ import com.hemebiotech.analytics.symptoms.Symptoms;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * This writes the symptoms of the map in order the elements of the array.
  * <strong>This program adds the text to the file but does not overwrite it.</strong>
  */
 public class WriterOfSymptoms implements IWriteSymptoms {
-@Override
+    @Override
     public void writeOnFile(String file, Symptoms symptomToWrite) throws IOException {
-        for (String myArray : symptomToWrite.getSymptomsArray()) {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-            try {
-                writer.write(myArray + " :" + symptomToWrite.getMapOfSymptoms().get(myArray));
-                writer.newLine();
-                writer.close();
-            } catch (IOException e) {
-                writer.close();
-            }
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+        for (Map.Entry<String, Integer> myMap : symptomToWrite.getMapOfSymptoms().entrySet()) {
+            writer.write(myMap.getKey() + " :" + myMap.getValue());
+            writer.newLine();
         }
+        writer.close();
     }
 }
 

@@ -3,8 +3,8 @@ package com.hemebiotech.analytics.tools;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * From a file it reads and counts occurrences and returns a map with the symptoms in key and their number of occurrences in value.
@@ -12,25 +12,24 @@ import java.util.Map;
 public class ReaderOfSymptoms implements IReadSymptoms {
 
     @Override
-    public Map<String, Integer> readFromFile(String file) throws IOException {
-        Map<String, Integer> mapOfFile = new HashMap<>();
-        BufferedReader reader = new BufferedReader(new FileReader(file));
-        String line = reader.readLine();
-        mapOfFile.put(line, 1);
-        line = reader.readLine();
+    public List<String> readFile(String pathOfFile){
+        ArrayList<String> result = new ArrayList();
 
-        while (line != null) {
+        if (pathOfFile != null) {
+            try {
+                BufferedReader reader = new BufferedReader (new FileReader(pathOfFile));
+                String line = reader.readLine();
 
-            if (mapOfFile.get(line) == null) {
-                mapOfFile.put(line, 1);
-            } else {
-                int occurrence = mapOfFile.get(line);
-                occurrence++;
-                mapOfFile.put(line, occurrence);
+                while (line != null) {
+                    result.add(line);
+                    line = reader.readLine();
+                }
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            line = reader.readLine();
         }
-        return mapOfFile;
+        return result;
     }
 
 }

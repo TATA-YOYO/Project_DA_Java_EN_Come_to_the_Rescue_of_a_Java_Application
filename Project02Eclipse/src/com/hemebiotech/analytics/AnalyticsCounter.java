@@ -1,10 +1,8 @@
 package com.hemebiotech.analytics;
 
 import com.hemebiotech.analytics.symptoms.Symptoms;
-import com.hemebiotech.analytics.tools.IReadSymptoms;
-import com.hemebiotech.analytics.tools.IWriteSymptoms;
-import com.hemebiotech.analytics.tools.ReaderOfSymptoms;
-import com.hemebiotech.analytics.tools.WriterOfSymptoms;
+import com.hemebiotech.analytics.tools.*;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,10 +13,12 @@ import java.util.Map;
 public class AnalyticsCounter {
     private static IReadSymptoms symptomsReader = new ReaderOfSymptoms();
     private static IWriteSymptoms symptomsWriter = new WriterOfSymptoms();
+    private static ICount counterOfSymptoms = new Counter();
 
     public static void main(String[] args) throws Exception {
-        Map<String, Integer> mapOfSymptoms = symptomsReader.readFromFile(args[0]);
-        Symptoms symptomsObject = new Symptoms(mapOfSymptoms);
-        symptomsWriter.writeOnFile(args[1], symptomsObject);
+        List<String> listOfSymptoms = symptomsReader.readFile(args[0]);
+        Map<String, Integer> mapOfSymptoms = counterOfSymptoms.CountSymptoms(listOfSymptoms);
+        Symptoms symptomsObject = new Symptoms(mapOfSymptoms,listOfSymptoms);
+        symptomsWriter.writeOnFile(args[1],symptomsObject );
     }
 }

@@ -1,5 +1,6 @@
 package com.hemebiotech.analytics.tools;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,5 +10,5 @@ import java.util.Map;
  * <strong>The implementation does not need to order the list</strong>
  */
 public interface IReadSymptoms {
-    Map<String, Integer> readFromFile(String pathOfFile) throws IOException;
+    List<String> readFile(String pathOfFile);
 }
